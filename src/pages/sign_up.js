@@ -47,6 +47,10 @@ export default function SignUp() {
         setError(error.message);
       }
     } else {
+      setUsername('');
+      setFullName('');
+      setEmail('');
+      setPassword('');
       setError('This username already exists! Please try another.');
     }
   };
@@ -70,8 +74,12 @@ export default function SignUp() {
           <h1 className="flex justify-center w-full">
             <img src="/images/logo.png" alt="Instagram" className="mt-2 w-6/12 mb-4" />
           </h1>
-          {error && <p className="mb-4 text-xs text-red-primary">{error}</p>}
-          <form onSubmit={handleSignUp} method="POST">
+          {error && (
+            <p data-testid="error" className="mb-4 text-xs text-red-primary">
+              {error}
+            </p>
+          )}
+          <form onSubmit={handleSignUp} method="POST" data-testid="signup">
             <input
               aria-label="Enter your username"
               type="text"
@@ -123,7 +131,7 @@ export default function SignUp() {
         <div className="flex justify-center items-center flex-col w-full by-white p-4 border border-gray-primary rounded">
           <p className="text-sm">
             Have an account?{` `}
-            <Link to={ROUTES.LOGIN} className="font-bold text-blue-medium">
+            <Link to={ROUTES.LOGIN} className="font-bold text-blue-medium" data-testid="login">
               Login
             </Link>
           </p>
