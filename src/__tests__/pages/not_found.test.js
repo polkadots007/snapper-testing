@@ -3,6 +3,7 @@ import { render } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import FirebaseContext from '../../context/firebase';
 import UserContext from '../../context/user';
+import UserFixture from '../../fixtures/logged_in_user';
 import * as ROUTES from '../../constants/routes';
 import NotFound from '../../pages/not_found';
 
@@ -22,11 +23,7 @@ const firebase = {
   }))
 };
 
-const userLoggedIn = {
-  uid: 1,
-  displayName: 'priyansi',
-  username: 'priyansi'
-};
+const userLoggedIn = UserFixture;
 
 const noUserLoggedIn = null;
 

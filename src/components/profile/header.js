@@ -54,10 +54,11 @@ export default function Header({
       <div className="flex items-center justify-center flex-col col-span-2">
         <div className="container flex items-center">
           <p className="text-2xl mr-4">{profileUserName}</p>
-          {activeBtnFollow && (
+          {activeBtnFollow && loggedInUsername && (
             <button
               className="bg-blue-medium font-bold text-sm rounded text-white w-20 h-8"
               type="button"
+              data-testid="follow-status-btn"
               onClick={handleToggleFollow}
               onKeyDown={(event) => {
                 if (event.key === 'Enter') handleToggleFollow();

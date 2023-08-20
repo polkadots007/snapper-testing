@@ -2,11 +2,10 @@ import { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import FirebaseContext from '../../context/firebase';
 import UserContext from '../../context/user';
+import 'firebase/firestore';
 
 export default function Actions({ docId, totalLikes, likedPhoto, handleFocus }) {
-  const {
-    user: { uid: userId = '' }
-  } = useContext(UserContext);
+  const { user: { uid: userId = '' } = {} } = useContext(UserContext);
   const [toggleLiked, setToggleLiked] = useState(likedPhoto);
   const [likes, setLikes] = useState(totalLikes);
   const { firebase, FieldValue } = useContext(FirebaseContext);
@@ -30,6 +29,8 @@ export default function Actions({ docId, totalLikes, likedPhoto, handleFocus }) 
       <div className="flex justify-between p-4">
         <div className="flex">
           <svg
+            data-testid={`like-photo-${docId}`}
+            alt={`like-photo-${docId}`}
             onClick={handleToggleLiked}
             onKeyDown={(event) => {
               if (event.key === 'Enter') {
@@ -53,6 +54,7 @@ export default function Actions({ docId, totalLikes, likedPhoto, handleFocus }) 
             />
           </svg>
           <svg
+            data-testid={`focus-input-${docId}`}
             onClick={handleFocus}
             onKeyDown={(event) => {
               if (event.key === 'Enter') {
@@ -76,7 +78,9 @@ export default function Actions({ docId, totalLikes, likedPhoto, handleFocus }) 
         </div>
       </div>
       <div className="p-4 py-0">
-        <p className="font-bold">{likes === 1 ? `${likes} like` : `${likes} likes`}</p>
+        <p data-testid={`like-count-${docId}`} className="font-bold">
+          {likes === 1 ? `${likes} like` : `${likes} likes`}
+        </p>
       </div>
     </>
   );

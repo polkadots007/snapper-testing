@@ -27,6 +27,7 @@ export default function SuggestedProfile({
   return !followed && !removeSuggestion ? (
     <div className="group flex flex-col">
       <div
+        data-testid={`remove-profile-${profileDocId}`}
         className="invisible group-hover:visible cursor-pointer w-0.5 h-0.5 scale-50 self-end pb-3 pr-4"
         onClick={handleRemoveProfile}
         role="presentation"

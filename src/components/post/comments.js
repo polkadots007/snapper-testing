@@ -17,6 +17,7 @@ export default function Comments({ docId, comments: allComments, posted, comment
       <div className="p-4 pt-1 pb-4">
         {comments.length >= 3 && noOfComments < comments.length && (
           <button
+            data-testid={`view-more-comments-${docId}`}
             className="text-sm text-gray-base mb-1 cursor-pointer"
             type="button"
             onClick={increaseCommentsByView}
@@ -30,11 +31,15 @@ export default function Comments({ docId, comments: allComments, posted, comment
           </button>
         )}
         {comments.slice(0, noOfComments).map((item) => (
-          <p key={`${item.comment}-${item.displayName}`} className="mb-1">
+          <p
+            key={`${item.comment}-${item.displayName}`}
+            data-testid={`${item.comment}-${item.displayName}`}
+            className="mb-1"
+          >
             <Link to={`/p/${item.displayName}`}>
               <span className="mr-1 font-bold">{item.displayName}</span>
             </Link>
-            <span>{item.comment}</span>
+            <span alt="comment-desc">{item.comment}</span>
           </p>
         ))}
         <p className="text-gray-base uppercase text-xs mt-2">

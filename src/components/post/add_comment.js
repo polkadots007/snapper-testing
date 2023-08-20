@@ -6,9 +6,7 @@ import UserContext from '../../context/user';
 export default function AddComment({ docId, comments, setComments, commentInput }) {
   const [comment, setComment] = useState('');
   const { firebase, FieldValue } = useContext(FirebaseContext);
-  const {
-    user: { displayName }
-  } = useContext(UserContext);
+  const { user: { displayName } = {} } = useContext(UserContext);
 
   const handleSubmitComment = (event) => {
     event.preventDefault();
@@ -34,6 +32,7 @@ export default function AddComment({ docId, comments, setComments, commentInput 
       />
       <div className="grow border-l border-t border-gray-primary rounded-l-md">
         <form
+          data-testid={`add-comment-submit-${docId}`}
           className="flex justify-between pl-0 pr-5"
           method="POST"
           onSubmit={(event) =>
@@ -41,6 +40,7 @@ export default function AddComment({ docId, comments, setComments, commentInput 
           }
         >
           <input
+            data-testid={`add-comment-${docId}`}
             aria-label="Add a comment"
             autoComplete="off"
             className="text-sm text-gray-base w-full mr-3 py-5 px-4 rounded-md"

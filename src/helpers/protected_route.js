@@ -5,7 +5,7 @@ import * as ROUTES from '../constants/routes';
 
 export default function ProtectedRoute({ user, children, ...rest }) {
   const curLocation = useLocation();
-
+  console.log('loc', curLocation);
   const [location] = useState(curLocation.state || {});
   return user ? (
     children

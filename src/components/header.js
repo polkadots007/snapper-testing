@@ -20,7 +20,7 @@ export default function Header() {
             </h1>
           </div>
           <div className="text-gray-700 text-center flex items-center align-items">
-            {user ? (
+            {user && user.uid ? (
               <>
                 <Link to={ROUTES.DASHBOARD} aria-label="Dashboard">
                   <svg
@@ -80,6 +80,7 @@ export default function Header() {
                 <Link to={ROUTES.LOGIN}>
                   <button
                     type="button"
+                    title="Log In"
                     className="bg-blue-medium font-bold text-sm rounded text-white w-20 h-8"
                   >
                     Log In
@@ -88,6 +89,7 @@ export default function Header() {
                 <Link to={ROUTES.SIGN_UP}>
                   <button
                     type="button"
+                    title="Sign Up"
                     className="font-bold text-sm rounded text-blue-medium w-20 h-8"
                   >
                     Sign Up

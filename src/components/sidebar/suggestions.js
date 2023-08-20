@@ -25,7 +25,7 @@ export default function Suggestions({ userId, docId, following }) {
         <p className="font-bold text-gray-base">Suggestions for you</p>
       </div>
       <div className="mt-2 grid gap-2">
-        {profiles.map((profile) => (
+        {profiles?.map((profile) => (
           <SuggestedProfile
             key={profile.docId}
             profileDocId={profile.docId}
