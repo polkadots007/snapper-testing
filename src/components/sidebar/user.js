@@ -13,7 +13,7 @@ export default function User({ username, fullName }) {
         <img
           className="rounded-full w-14 h-14 flex mr-3"
           src={`/images/avatars/${username}.jpg`}
-          alt=""
+          alt={username}
         />
       </div>
       <div className="col-span-3">
